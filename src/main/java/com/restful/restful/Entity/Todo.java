@@ -1,31 +1,34 @@
 package com.restful.restful.Entity;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
+import jakarta.persistence.*;
+import java.util.Date;
+
+@Entity
+@Table
+@Data
+@NoArgsConstructor
 public class Todo {
-	private String id;
-	private String task;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	Integer id;
 
-	public Todo() {
+	@Column
+	String task = "";
 
-	}
+	@Column(insertable = false, columnDefinition = "int default 1")
+	Integer status = 1;
 
-	public Todo(String id, String task) {
-		this.id = id;
-		this.task = task;
-	}
+	@CreatedDate
+	@Column(updatable = false, nullable = false)
+	Date createTime = new Date();
 
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getTask() {
-		return task;
-	}
-
-	public void setTask(String task) {
-		this.task = task;
-	}
+	@LastModifiedDate
+	@Column(nullable = false)
+	Date updateTime = new Date();
 }
