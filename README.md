@@ -1,5 +1,12 @@
 # Spring Boot - RESTful API
 
+# Branch
+
+This project have two branch:
+
+1. main -> For local test user
+2. sql-test -> For the user to have a MySQL database
+
 # Endpoint
 
 | endpoint | action |
