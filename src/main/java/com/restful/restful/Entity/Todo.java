@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.*;
 import java.util.Date;
 
@@ -31,4 +33,9 @@ public class Todo {
 	@LastModifiedDate
 	@Column(nullable = false)
 	Date updateTime = new Date();
+
+	@JsonBackReference
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="category_id")
+	private Category category;
 }
